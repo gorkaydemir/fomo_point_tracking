@@ -63,8 +63,8 @@ class ViTAP(nn.Module):
         pred_coord = regional_soft_argmax(x_coord, delta_treshold=4)        # (B, T, N, 2)
         pred_coord = pred_coord.view(B * T * N, 2)                          # (B * T * N, 2)
 
-        pred_coord[:, 0] *= (H / Hf)
-        pred_coord[:, 1] *= (W / Wf)
+        pred_coord[:, 1] *= (H / Hf)
+        pred_coord[:, 0] *= (W / Wf)
 
         return occ_logit, pred_coord
 
